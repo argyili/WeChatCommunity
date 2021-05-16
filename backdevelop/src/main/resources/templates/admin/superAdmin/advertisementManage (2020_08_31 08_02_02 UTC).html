@@ -1,0 +1,89 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>广告管理</title>
+    <script type="text/javascript" src="/js/advertisementManage.js"></script>
+    <link rel="stylesheet" href="/css/advertisementManage.css" type="text/css" />
+    <link rel="stylesheet" href="/bootstrap/css/core.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/icon.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/import/css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/text.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fonts/ptsans/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fluid.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/icons/icons.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/demo.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/colorpicker/colorpicker.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/tipsy/tipsy.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/spinner/spinner.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/jui/jquery.ui.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.theme.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/plupload/jquery.plupload.queue.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/elfinder/css/elfinder.css" media="screen" />
+</head>
+<body>
+    <div th:include="/admin/superAdmin/superAdminFrame :: copyright">
+        <div id="mws-Main" th:fragment="Main">
+            <form th：action="@{/superAdmin/advertisementctrl}" th:object="${advertisementctrlmsg}" method="get" class="form1">
+                <input type="hidden" id="view_id" th:field="*{viewId}"/>
+                <input type="hidden" id="modification_id" th:field="*{modificationId}"/>
+                <input type="hidden" id="delete_id" th:field="*{deleteId}"/>
+                <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-table-1">
+                            广告内容：
+                            <input type="text" id="likeadvcontent" th:field="*{likeAdvContent}"/>
+                            <button type="submit">查询</button>
+                        </span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-datatable-fn mws-table">
+                            <thead>
+                                <tr>
+                                    <td class="aid">广告ID</td>
+                                    <td class="img">广告图片</td>
+                                    <td class="advcontent">广告内容</td>
+                                    <td class="operation1">操作
+                                        <button type="submit">
+                                            <a href="/superAdmin/advertisementaddctrl">+</a>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <table class="mws-datatable-fn mws-table" id="id_data">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr th:each="advertisement:${list}">
+                                    <td th:text="${advertisement.aid}" class="aid"></td>
+                                    <td th:text="${advertisement.img}" class="img"></td>
+                                    <td th:text="${advertisement.advContent}" class="advcontent"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mws-datatable-fn mws-table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr><td>
+                                    <div id="barcon" name="barcon"></div>
+                                </td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

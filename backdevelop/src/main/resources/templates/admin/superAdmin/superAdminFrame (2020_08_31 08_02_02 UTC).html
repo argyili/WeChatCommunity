@@ -1,0 +1,38 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<div th:fragment="copyright">
+    <div id="mws-header" class="clearfix">
+        <div align="left" width="100px"><h1><font color="white">&nbsp;&nbsp;&nbsp;&nbsp;信奥社区</font></h1></div>
+    </div>
+    <div id="mws-wrapper">
+        <div id="mws-sidebar-stitch"></div>
+        <div id="mws-sidebar-bg"></div>
+        <div id="mws-sidebar">
+            <div id="mws-navigation">
+                <ul>
+                    <li class="active"><a href="/superAdmin/advertisementctrl" class="mws-i-01">广告管理</a></li>
+                    <li class="active"><a href="/superAdmin/banuserstatementctrl" class="mws-i-01">禁言用户</a></li>
+                    <li class="active"><a href="/superAdmin/userupgrade" class="mws-i-01">加板块管理员</a></li>
+                    <li class="active"><a href="/superAdmin/identifyStudent" class="mws-i-01">学生认证</a></li>
+                    <li class="active"><a href="/superAdmin/identifyTeacher" class="mws-i-01">教师认证</a></li>
+                    <li class="active"><a href="/superAdmin/refinementPostBlock" class="mws-i-01">帖子加精</a></li>
+                    <li class="active"><a href="/superAdmin/forbidPostBlock" class="mws-i-01">帖子禁止评论</a></li>
+                    <li class="active"><a href="/superAdmin/deletePostBlock" class="mws-i-01">删除帖子</a></li>
+                    <li class="active"><a href="/superAdmin/foldPostBlock" class="mws-i-01">折叠帖子</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="mws-container" class="clearfix">
+            <div id="mws-Main" th:include="::Main"></div>
+            <div id="mws-footer">
+                <a target="_blank" title=" 信奥社区管理平台"> 信奥社区管理平台</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

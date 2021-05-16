@@ -1,0 +1,31 @@
+/* pages/frontpage/frontpage.wxss */
+
+/*按钮所在容器的属性设置*/
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*按钮默认状态下属性*/
+.flex-view-item {
+  width: 100%;
+  height: 60px;
+  background-color: #ffa589;
+  text-align: center;
+}
+/*按钮选中状态下属性*/
+.flex-view-item1 {
+  width: 100%;
+  height: 60px;
+  background-color: #ff5400;
+  text-align: center;
+}
+
+.picker {
+  background-color: #ffa589;
+  height: 60px;
+  display: flex;
+  align-items: center;
+}

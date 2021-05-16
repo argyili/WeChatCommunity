@@ -1,0 +1,5 @@
+<!--pages/message/mycomment/mycomment.wxml-->
+<view>
+  <view class="weui-article__h1">评论内容：</view>
+  <text>{{commentcontent}}</text>
+</view>

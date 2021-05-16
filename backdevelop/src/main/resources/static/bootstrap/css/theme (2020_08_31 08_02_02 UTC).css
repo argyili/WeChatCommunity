@@ -1,0 +1,18 @@
+div#mws-header {
+	border-color:#c5d52b;
+}
+
+.mws-panel .mws-panel-header span,
+div#mws-user-tools #mws-username,
+div#mws-user-tools #mws-user-info #mws-user-functions ul,
+div#mws-user-tools #mws-user-info #mws-user-functions ul li,
+div#mws-user-tools #mws-user-info #mws-user-functions #mws-username,
+div#mws-navigation ul li.active a,
+div#mws-navigation ul li.active span {
+	color:#FFFFFF;
+	text-shadow:0 0 6px rgba(197, 213, 42, 0.5);
+}
+
+div#mws-searchbox input {
+	background-color:#c5d52b;
+}

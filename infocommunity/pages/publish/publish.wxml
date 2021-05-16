@@ -1,0 +1,40 @@
+<!--pages/publish/publish.wxml-->
+<view class="by">
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+                <input class="weui-input" minlength="{{min}}" bindinput="inpTitle" placeholder="请输入标题" />
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" minlength="{{min}}" maxlength="{{max}}" bindinput="inpContent" placeholder="请输入评论内容" style="height: 10em" />
+                <view class="weui-textarea-counter"> 
+                    <text class="scm" >{{texts}}</text>
+                    <text class="ctn" >{{currentWordNumber}}/{{max}}</text>
+                </view>
+           </view>
+        </view>
+    </view>
+    <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+            <view class="weui-label">省份/地区</view>
+        </view>
+        <view class="weui-cell__bd">
+            <picker bindchange="bindCountryChange" value="{{provinceIndex}}" range="{{provinces}}">
+                <view class="weui-select weui-select_in-select-after">{{provinces[provinceIndex]}}</view>
+            </picker>
+        </view>
+     </view>
+    <view style="background:white;font-size: 30rpx;color: #03bc03;padding:0 0 0 2%;">{{em}}</view>
+    <view class="weui-cell__bd" >
+        <view class="tui-btn-content">
+            <button bindtap="delete" plain="{{plain}}">取消</button>
+        </view>
+        <view class="tui-btn-content">
+            <button type="primary" size="{{primarySize}}" bindtap="myPost"> 发布 </button>
+         </view>
+    </view>
+</view>

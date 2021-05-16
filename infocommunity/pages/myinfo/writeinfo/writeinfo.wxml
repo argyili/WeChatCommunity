@@ -1,0 +1,251 @@
+<view class="content">
+    <view class="user-info">
+        <view class="head-appear">
+            <open-data type="userAvatarUrl"></open-data>
+        </view>
+        <view class="nick-name">
+            <open-data type="userNickName"></open-data> 
+        </view>
+    </view> 
+    <view class="page">
+        <view class="page_bd">
+            <view class="weui-tab"> 
+                <view class="weui-cell weui-cell_select">
+                    <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                        <view class="weui-label">您的角色</view>
+                        </view>
+                    <view class="weui-cell__bd">                    
+                        <picker bindchange="actorChange" value="{{activeIndex}}" range="{{actorTabs}}">                       
+                            <view class="weui-select weui-select_in-select-after" >{{actorTabs[activeIndex]}}</view>
+                        </picker>                   
+                    </view>
+                </view>
+                <view  hidden="{{activeIndex != 0}}">
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell" >
+                            <view class="weui-cell__bd">所在学校</view>
+                            <view wx:if = "{{info.school == null}}">
+                                <input class="weui-input" minlength="{{min}}" bindinput="inpSchool" placeholder="请输入所在学校" />
+                            </view>
+                            <view wx:else>
+                                <input class="weui-input" bindinput="inpSchool" placeholder="{{info.school}}" />
+                            </view>                          
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label">省份/地区</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="bindCountryChange" value="{{provinceIndex}}" range="{{provinces}}">    
+                                <view class="weui-select weui-select_in-select-after" wx:if="{{info.region==0}}">{{provinces[provinceIndex]}}</view>
+                                <view class="weui-select weui-select_in-select-after" wx:else>{{provinces[info.region]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_input weui-cell_vcode">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">手机号</view>
+                        </view>
+                        <view wx:if="{{info.phonenum==null}}">
+                            <input class="weui-input" maxlength="{{max}}" bindinput="inpPhoneNum" placeholder="请输入手机号" />
+                        </view>
+                        <view  wx:else>
+                            <input class="weui-input" bindinput="inpPhoneNum" placeholder="{{info.phonenum}}" />
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label" >获得最高奖项</view>     
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="bindPrinceChange" value="{{priceIndex}}" range="{{priceTable}}">
+                                <view class="weui-select weui-select_in-select-after" wx:if="info.topprize==null}}">{{priceTable[priceIndex]}}</view>
+                                <view wx:else>{{priceTable[info.topprize]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell" >
+                            <view class="weui-cell__bd">奖项证明</view>                            
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files" id="uploaderFiles">
+                                <view wx:if="{{path!==''&&path!==null}}"> 
+                                    <image wx:if="{{path}}" class=" image-item weui-uploader__img "  src="{{path}}" mode="aspectFill" />    
+                                </view>
+                                    <block wx:for="{{files}}" wx:key="*this">
+                                        <view class=" mimage-style weui-uploader__file " bindtap="previewImage" id="{{item}}">                                           
+                                            <image class=" image-item weui-uploader__img " src="{{item}}" mode="aspectFill" />
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>                           
+                        </view>
+                    </view> 
+                    <button class="weui-btn" type="default" bindtap="stuPost">保存</button>
+                </view>
+                <view  hidden="{{activeIndex != 1}}">
+                    <view class="weui-cell weui-cell_input weui-cell_vcode">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">手机号</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <view wx:if="{{info.phonenum==null}}">
+                                <input class="weui-input" maxlength="{{max}}" bindinput="inpPhoneNum" placeholder="请输入手机号" />
+                            </view>
+                            <view  wx:else>
+                                <input class="weui-input" bindinput="inpPhoneNum" placeholder="{{info.phonenum}}" />
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label">您的目标</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="goalChange" value="{{goalIndex}}" range="{{goalTabs}}">
+                                <view class="weui-select weui-select_in-select-after" wx:if="info.purpose==null}}">{{goalTabs[goalIndex]}}</view>
+                                <view wx:else>{{goalTabs[info.purpose]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label">省份/地区</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="bindCountryChange" value="{{provinceIndex}}" range="{{provinces}}">
+                                <view class="weui-select weui-select_in-select-after" wx:if="{{info.region==0}}">{{provinces[provinceIndex]}}</view>
+                                <view class="weui-select weui-select_in-select-after" wx:else>{{provinces[info.region]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <button class="weui-btn" type="default" bindtap="parPost">保存</button>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label">省份/地区</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="bindCountryChange" value="{{provinceIndex}}" range="{{provinces}}">
+                                <view class="weui-select weui-select_in-select-after" wx:if="{{info.region==0}}">{{provinces[provinceIndex]}}</view>
+                                <view class="weui-select weui-select_in-select-after" wx:else>{{provinces[info.region]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_input weui-cell_vcode">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">手机号</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <view wx:if="{{info.phonenum==null}}">
+                                <input class="weui-input" maxlength="{{max}}" bindinput="inpPhoneNum" placeholder="请输入手机号" />
+                            </view>
+                            <view  wx:else>
+                                <input class="weui-input" bindinput="inpPhoneNum" placeholder="{{info.phonenum}}" />
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell" >
+                            <view class="weui-cell__bd">上传认证</view>
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files" id="uploaderFiles">
+                                    <block wx:for="{{files}}" wx:key="*this">
+                                        <view class=" mimage-style weui-uploader__file " bindtap="previewImage" id="{{item}}">
+                                        <view wx:if="{{path!==''&&path!==null}}"> 
+                                           <image class=" image-item weui-uploader__img "  src="{{path}}" mode="aspectFill" />  
+                                        </view>
+                                        <image class=" image-item weui-uploader__img " src="{{item}}" mode="aspectFill" />
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <button class="weui-btn" type="default" bindtap="teaPost">保存</button>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 3}}">
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label">省份/地区</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="bindCountryChange" value="{{provinceIndex}}" range="{{provinces}}">
+                                <view class="weui-select weui-select_in-select-after" wx:if="{{info.region==0}}">{{provinces[provinceIndex]}}</view>
+                                <view class="weui-select weui-select_in-select-after" wx:else>{{provinces[info.region]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_input weui-cell_vcode">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">手机号</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <view wx:if="{{info.phonenum==null}}">
+                                <input class="weui-input" bindinput="inpPhoneNum" maxlength="{{max}}"  placeholder="请输入手机号" />
+                            </view>
+                            <view  wx:else>
+                                <input class="weui-input" bindinput="inpPhoneNum" placeholder="{{info.phonenum}}" />
+                            </view>
+                        </view>
+                    </view>
+                    <view class="weui-cells weui-cells_after-title">
+                        <view class="weui-cell">
+                            <view class="weui-cell__bd">上传认证</view>
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files" id="uploaderFiles">
+                                    <block wx:for="{{files}}" wx:key="*this">
+                                        <view class=" mimage-style weui-uploader__file " bindtap="previewImage" id="{{item}}">
+                                        <view wx:if="{{path!==''&&path!==null}}"> 
+                                            <image class=" image-item weui-uploader__img "  src="{{path}}" mode="aspectFill" />                                         </view>
+                                        <image class=" image-item weui-uploader__img " src="{{item}}" mode="aspectFill" />
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <button class="weui-btn" type="default" bindtap="teaPost">保存</button>
+                </view>
+                <view class="weui-tab__content" hidden="{{activeIndex != 4}}">
+                    <view class="weui-cell weui-cell_select">
+                        <view class="weui-cell__hd weui-cell__hd_in-select-after">
+                            <view class="weui-label">省份/地区</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <picker bindchange="bindCountryChange" value="{{provinceIndex}}" range="{{provinces}}">
+                                <view class="weui-select weui-select_in-select-after" wx:if="{{info.region==0}}">{{provinces[provinceIndex]}}</view>
+                                <view class="weui-select weui-select_in-select-after" wx:else>{{provinces[info.region]}}</view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class="weui-cell weui-cell_input weui-cell_vcode">
+                        <view class="weui-cell__hd">
+                            <view class="weui-label">手机号</view>
+                        </view>
+                        <view class="weui-cell__bd">
+                            <view wx:if="{{info.phonenum==null}}">
+                                <input class="weui-input" bindinput="inpPhoneNum" maxlength="{{max}}"  placeholder="请输入手机号" />
+                            </view>
+                            <view  wx:else>
+                                <input class="weui-input" bindinput="inpPhoneNum" placeholder="{{info.phonenum}}" />
+                            </view>
+                        </view>   
+                    </view>
+                    <button class="weui-btn" type="default" bindtap="otherPost">保存</button>
+                </view>
+            </view>
+        </view>
+    </view>   
+</view>

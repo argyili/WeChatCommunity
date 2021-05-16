@@ -1,0 +1,5 @@
+/* pages/publish/publish.wxss */
+.tui-btn-content{
+ height: 60px;
+ line-height: 60px;
+}

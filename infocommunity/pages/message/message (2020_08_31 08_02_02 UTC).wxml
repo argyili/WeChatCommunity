@@ -1,0 +1,59 @@
+<!--pages/message/message.wxml-->
+<view class="whole-style">
+    <view class="page">
+        <view class="page__bd">
+            <view class="weui-tab">
+                <view class="weui-navbar">
+                    <block wx:for="{{tabs}}" wx:key="*this" class='weui-badge'>
+                        <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                            <view class="weui-navbar__title">{{item}}</view>
+                        </view>
+                    </block>
+                    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);">
+                    </view>
+                </view>
+                <view class="weui-tab__panel">
+                    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd" wx:for="{{tomecomment}}" wx:for="{{nickname}}" wx:key="key" wx:for-index="i" bindtap='tomeComment'>
+                                <view class="weui-media-box weui-media-box_text">
+                                    <view><text>{{tomecomment[i].commenttime}}</text></view>
+                                    <view><text>{{nickname[i]}}在您的帖子《{{tomecomment[i].title}}》添加了新的评论：</text></view>
+                                    <view class="weui-media-box__desc">{{tomecomment[i].commentcontent}}</view>
+                                    <view class="weui-media-box__title weui-media-box__title_in-text"></view>
+                                </view>
+                            </view>    
+                        </view>
+                    </view>
+                    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                        <view class="weui-panel weui-panel_access">
+                            <view class="weui-panel__bd" wx:for="{{choice}}" wx:key="key" wx:for-index="i">
+                                <view class="weui-media-box weui-media-box_text">
+                                    <view><text>{{choice[i].choicetime}}</text></view>
+                                    <view>
+                                      <text>{{choice[i].towxid}}给您的帖子《{{choice[i].title}}》点了
+                                        <text wx:if="{{choice[i].type == 0}}">赞</text>
+                                        <text wx:if="{{choice[i].type == 1}}">踩</text>
+                                      </text>
+                                    </view>
+                                </view>
+                            </view>    
+                        </view>
+                    </view>
+                    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                        <view class="weui-panel weui-panel_access">
+                              <view class="weui-panel__bd" wx:for="{{mycomment}}" wx:key="key" wx:for-index="i">
+                                  <view class="weui-media-box weui-media-box_text" data-index='{{i}}' bindtap='jumpMycomment'>
+                                      <view><text>{{mycomment[i].commenttime}}</text></view>
+                                      <view><text>我给《{{mycomment[i].title}}》评论：</text></view>
+                                      <view class="weui-media-box__desc">{{mycomment[i].commentcontent}}</view>
+                                      <view class="weui-media-box__title weui-media-box__title_in-text"></view>
+                                  </view>
+                              </view>    
+                          </view>
+                    </view>
+                 </view>
+            </view>
+        </view>
+    </view>
+</view>

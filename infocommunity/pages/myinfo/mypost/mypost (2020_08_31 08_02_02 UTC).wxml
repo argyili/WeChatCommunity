@@ -1,0 +1,20 @@
+<!--pages/myinfo/mypost/mypost.wxml-->
+<view class="weui-tab__panel">
+  <view class="weui-panel" wx:for="{{info}}" wx:key="key" wx:for-index="i">
+    <view class="weui-panel__hd">{{info[i].block}}</view>
+      <view class="weui-panel__bd" data-index='{{i}}' bindtap="clickIntoContent">
+        <view class="weui-media-box weui-media-box_text">
+          <view class="weui-media-box__title weui-media-box__title_in-text">{{info[i].title}}</view>
+          <view class="weui-media-box__desc">{{info[i].content}}</view>
+          <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta">{{info[i].wxid}}</view>
+              <view class="weui-media-box__info__meta">{{info[i].postingtime}}</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">其它信息</view>
+          </view>
+          <view class="weui-media-box__info">
+                <view class="weui-media-box__info__meta"><text> 赞{{info[i].praisenum}} </text> <text>踩{{info[i].criticismnum}} </text> <text>评论{{info[i].commentsnum}} </text></view>
+          </view> 
+        </view>
+      </view>
+  </view>
+</view>

@@ -1,0 +1,114 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>板块帖子批量删除</title><script type="text/javascript" src="/js/managePostByBlock.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/core.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/icon.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/import/css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/text.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fonts/ptsans/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fluid.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/icons/icons.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/demo.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/colorpicker/colorpicker.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/tipsy/tipsy.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/spinner/spinner.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/jui/jquery.ui.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.theme.css" media="screen" />
+    <script type="text/javascript" src="/import/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jimgareaselect/jquery.imgareaselect.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.dualListBox-1.3.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jgrowl/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.filestyle.js"></script>
+    <script type="text/javascript" src="/import/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/excanvas.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.stack.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/colorpicker/colorpicker.js"></script>
+    <script type="text/javascript" src="/import/plugins/tipsy/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/import/plugins/sourcerer/Sourcerer-1.2.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.validate.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/import/plugins/spinner/ui.spinner.js"></script>
+    <script type="text/javascript" src="/import/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/import/plugins/elfinder/js/elfinder.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.flash.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.html4.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.html5.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+    <link rel="stylesheet" type="text/css" href="/import/plugins/plupload/jquery.plupload.queue.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/elfinder/css/elfinder.css" media="screen" />
+    <script type="text/javascript" src="/import/js/mws.js"></script>
+    <script type="text/javascript" src="/import/js/demo.js"></script>
+    <script type="text/javascript" src="/import/js/themer.js"></script>
+    <script type="text/javascript" src="/import/js/demo.files.js"></script>
+</head>
+<body>
+    <div th:include="/admin/superAdmin/superAdminFrame :: copyright">
+        <div id="mws-Main" th:fragment="Main">
+            <form th：action="@{/Admin/deletePostBlock}" th:object="${post}" method="get">
+                <input type="hidden" th:field="*{checkedId}" id="checkedId"/>
+                <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-table-1">删除帖子</span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-datatable-fn mws-table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <table id="selectblock" onclick="checkobject()"></table>
+                                <input type="submit" value="删除" onclick="deletePost()" />
+                            </tbody>
+                        </table>
+                        <table class="mws-datatable-fn mws-table" id="serchPost">
+                            <thead>
+                                <tr>
+                                    <th>帖子id</th>
+                                    <th>帖主微信号</th>
+                                    <th>帖子标题</th>
+                                    <th>板块</th>
+                                    <th>帖子内容</th>
+                                    <th>浏览量</th>
+                                    <th>点赞量</th>
+                                    <th>点踩量</th>
+                                    <th>评论量</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="post:${searchPost}">
+                                    <td th:text="${post.pid}"></td>
+                                    <td th:text="${post.wxid}"></td>
+                                    <td th:text="${post.title}"></td>
+                                    <td th:text="${post.block}"></td>
+                                    <td th:text="${post.content}"></td>
+                                    <td th:text="${post.eyesNum}"></td>
+                                    <td th:text="${post.praiseNum}"></td>
+                                    <td th:text="${post.criticismNum}"></td>
+                                    <td th:text="${post.commentsNum}"></td>
+                                    <td>
+                                        <input type="checkbox" name="checkbox0" id="Refinement" onclick="chk()" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

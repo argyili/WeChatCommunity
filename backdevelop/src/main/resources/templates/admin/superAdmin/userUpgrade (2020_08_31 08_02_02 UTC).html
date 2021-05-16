@@ -1,0 +1,143 @@
+﻿<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>升级为板块管理员</title>
+    <script type="text/javascript" src="/js/userUpgrade.js"></script>
+    <link rel="stylesheet" href="/css/userUpgrade.css" type="text/css" />
+    <script type="text/javascript" src="/js/advertisementManage.js"></script>
+    <link rel="stylesheet" href="/css/advertisementManage.css" type="text/css" />
+    <link rel="stylesheet" href="/bootstrap/css/core.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/icon.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/import/css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/text.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fonts/ptsans/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fluid.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/icons/icons.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/demo.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/colorpicker/colorpicker.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/tipsy/tipsy.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/spinner/spinner.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/jui/jquery.ui.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.theme.css" media="screen" />
+    <script type="text/javascript" src="/import/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jimgareaselect/jquery.imgareaselect.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.dualListBox-1.3.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jgrowl/jquery.jgrowl.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.filestyle.js"></script>
+    <script type="text/javascript" src="/import/plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/excanvas.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.pie.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.stack.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/flot/jquery.flot.resize.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/colorpicker/colorpicker.js"></script>
+    <script type="text/javascript" src="/import/plugins/tipsy/jquery.tipsy.js"></script>
+    <script type="text/javascript" src="/import/plugins/sourcerer/Sourcerer-1.2.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.validate.js"></script>
+    <script type="text/javascript" src="/import/plugins/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/import/plugins/spinner/ui.spinner.js"></script>
+    <script type="text/javascript" src="/import/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/import/plugins/elfinder/js/elfinder.min.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.flash.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.html4.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/plupload.html5.js"></script>
+    <script type="text/javascript" src="/import/plugins/plupload/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+    <link rel="stylesheet" type="text/css" href="/import/plugins/plupload/jquery.plupload.queue.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/elfinder/css/elfinder.css" media="screen" />
+    <script type="text/javascript" src="/import/js/mws.js"></script>
+    <script type="text/javascript" src="/import/js/demo.js"></script>
+    <script type="text/javascript" src="/import/js/themer.js"></script>
+    <script type="text/javascript" src="/import/js/demo.files.js"></script>
+</head>
+<body>
+<div th:include="/admin/superAdmin/superAdminFrame :: copyright">
+    <div id="mws-Main" th:fragment="Main">
+        <form th：action="@{/superAdmin/userupgrade}" th:object="${userupgrademsg}" method="get">
+            <span>请输入要升级为板块管理员的用户手机号：</span>
+            <input type="text" th:field="*{userPhone}" name="userphone" id="userphone"/>
+            <input type="hidden" name="choice" id="choice"/>
+            <input type="hidden" th:value="${hasresult}" id="has"/>
+            <button type="submit">查询</button>
+            <br/>
+            <table>
+                <tr th:each="messageinfo:${upgradeResult}">
+                    <td th:text="${messageinfo.info}"></td>
+                </tr>
+            </table>
+            <div th:if="${hasresult} lt '-1'">
+                <div id="t0">
+                    <span>当前查询到的用户为：</span>
+                    <span th:text="${nameresult}"></span>
+                    <span>(</span>
+                    <span th:text="${idresult}"></span>
+                    <span>)</span>
+                    <br/>
+                    <span>升级板块管理员</span>
+                    <br/>
+                    <span>请选择其所管辖的板块：</span>
+                    <br/>
+                    <label><input name="region" type="checkbox" value="北京" id="default_region"/>北京市</label>
+                    <label><input name="region" type="checkbox" value="上海"/>上海市</label>
+                    <label><input name="region" type="checkbox" value="天津"/>天津市</label>
+                    <label><input name="region" type="checkbox" value="重庆"/>重庆市</label>
+                    <label><input name="region" type="checkbox" value="河北"/>河北省</label>
+                    <label><input name="region" type="checkbox" value="山西"/>山西省</label>
+                    <br/>
+                    <label><input name="region" type="checkbox" value="内蒙古"/>内蒙古自治区</label>
+                    <label><input name="region" type="checkbox" value="辽宁"/>辽宁省</label>
+                    <label><input name="region" type="checkbox" value="吉林"/>吉林省</label>
+                    <label><input name="region" type="checkbox" value="黑龙江"/>黑龙江省</label>
+                    <label><input name="region" type="checkbox" value="江苏"/>江苏省</label>
+                    <label><input name="region" type="checkbox" value="浙江"/>浙江省</label>
+                    <br/>
+                    <label><input name="region" type="checkbox" value="安徽"/>安徽省</label>
+                    <label><input name="region" type="checkbox" value="福建"/>福建省</label>
+                    <label><input name="region" type="checkbox" value="江西"/>江西省</label>
+                    <label><input name="region" type="checkbox" value="山东"/>山东省</label>
+                    <label><input name="region" type="checkbox" value="河南"/>河南省</label>
+                    <label><input name="region" type="checkbox" value="湖北"/>湖北省</label>
+                    <br/>
+                    <label><input name="region" type="checkbox" value="湖南"/>湖南省</label>
+                    <label><input name="region" type="checkbox" value="广东"/>广东省</label>
+                    <label><input name="region" type="checkbox" value="广西"/>广西壮族自治区</label>
+                    <label><input name="region" type="checkbox" value="海南"/>海南省</label>
+                    <label><input name="region" type="checkbox" value="四川"/>四川省</label>
+                    <label><input name="region" type="checkbox" value="贵州"/>贵州省</label>
+                    <br/>
+                    <label><input name="region" type="checkbox" value="云南"/>云南省</label>
+                    <label><input name="region" type="checkbox" value="西藏"/>西藏自治区</label>
+                    <label><input name="region" type="checkbox" value="陕西"/>陕西省</label>
+                    <label><input name="region" type="checkbox" value="甘肃"/>甘肃省</label>
+                    <label><input name="region" type="checkbox" value="青海"/>青海省</label>
+                    <label><input name="region" type="checkbox" value="宁夏"/>宁夏回族自治区</label>
+                    <br/>
+                    <label><input name="region" type="checkbox" value="新疆"/>新疆维吾尔自治区</label>
+                    <label><input name="region" type="checkbox" value="香港"/>香港特别行政区</label>
+                    <label><input name="region" type="checkbox" value="澳门"/>澳门特别行政区</label>
+                    <label><input name="region" type="checkbox" value="台湾"/>台湾省</label>
+                    <br/>
+                    <button type="submit" onclick="changeChoice('是')">确定</button>
+                    <button type="button" onclick="changeChoice('否')">取消</button>
+                </div>
+            </div>
+            <div th:if="${hasresult} gt '1'">
+                <span>未查询到手机号为：</span>
+                <span th:text="${userphone}"></span>
+                <span>的用户，请检查您所输入的手机号码是否正确。</span>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!--pages/myinfo/myinfo.wxml-->
+<view class=''>
+  <view class="usermotto1">
+  </view>
+  <view class="userinfo">
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+      <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+  <view class='usermotto'>
+    <button bindtap="add" class="weui-btn weui-btn_primary" bindtap="myPost">我的帖子</button>
+    <button bindtap="add" class="weui-btn weui-btn_primary" bindtap="intoStudentInfo">完善个人信息</button>
+  </view>
+  <view class="bg"  style="opacity:{{0.8}}">
+    <image class="bg-image" mode="scaleToFill" src="../../images/1.jpg"></image>
+  </view>
+</view>
+

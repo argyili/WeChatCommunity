@@ -1,0 +1,53 @@
+/* pages/studentInformation/studentInformation.wxss */
+.user-info{
+    background-color: #fff;
+}
+.head-appear{
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+}
+.mimage-style{
+   display: flex;
+   flex-direction: row
+}
+.image-item{
+  flex-grow: 1;
+}
+.select-one{
+  text-align: center;
+}
+.nick-name{
+  margin-bottom: 10rpx;
+  text-align: center;
+}
+page,
+.page,
+.page__bd{
+    height: 100%;
+}
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-tab__content{
+    padding-top: 60px;
+   
+}
+.information-item{
+  height: 70rpx;
+  background-color: #fff;
+  display: flex;
+  border-radius: 20rpx;
+}
+.informatio-left{
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+}
+.information-right{
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  color: #ccc;
+  margin-right: 20rpx;
+}

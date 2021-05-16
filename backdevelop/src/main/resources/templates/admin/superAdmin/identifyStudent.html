@@ -1,0 +1,79 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>学生认证</title>
+    <script type="text/javascript" src="/js/identify.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/core.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/icon.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/theme.css"/>
+    <link rel="stylesheet" type="text/css" href="/import/css/reset.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/text.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fonts/ptsans/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/fluid.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/icons/icons.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/demo.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/colorpicker/colorpicker.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/fullcalendar/fullcalendar.print.css" media="print" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/tipsy/tipsy.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/jgrowl/jquery.jgrowl.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/spinner/spinner.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/jui/jquery.ui.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/css/mws.theme.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/plupload/jquery.plupload.queue.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/import/plugins/elfinder/css/elfinder.css" media="screen" />
+</head>
+<body>
+    <div th:include="/admin/superAdmin/superAdminFrame :: copyright">
+        <div id="mws-Main" th:fragment="Main">
+            <form th：action="@{/superAdmin/identifyStudent}" th:object="${student}" method="post" class="form1">
+                <input type="hidden" th:field="*{wxid}"/>
+                <input type="hidden" id="identification" th:field="*{identification}"/>
+                <div class="mws-panel grid_8">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-table-1">
+                            待认证学生
+                        </span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-datatable-fn mws-table" id="id_data">
+                            <thead>
+                                <tr>
+                                    <td class="wxid">微信号</td>
+                                    <td class="region">地区</td>
+                                    <td class="phoneNum">电话号码</td>
+                                    <td class="forbidden">禁言状态</td>
+                                    <td class="school">学校</td>
+                                    <td class="view">选择查看</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="student:${searchStudents}">
+                                    <td th:text="${student.wxid}" class="wxid"></td>
+                                    <td th:text="${student.region}" class="region"></td>
+                                    <td th:text="${student.phoneNum}" class="phoneNum"></td>
+                                    <td th:text="${student.forbidden}" class="forbidden"></td>
+                                    <td th:text="${student.school}" class="school"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="mws-datatable-fn mws-table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                                <tr><td>
+                                    <div id="barcon" name="barcon"></div>
+                                </td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

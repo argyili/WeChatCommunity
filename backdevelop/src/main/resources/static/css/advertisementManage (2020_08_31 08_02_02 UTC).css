@@ -1,0 +1,34 @@
+.id_data {border: solid;text-align: center;}
+a{text-decoration: none;}
+.id_data td{
+
+    text-align: center;
+}
+.aid {
+    width: 19%;
+}
+
+.operation1 {
+    width: 27%;
+}
+
+.operation2 {
+    width: 80px;
+}
+
+.img {
+    width: 27%;
+}
+
+.advcontent {
+    width: 27%;
+}
+
+table {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.select_like {
+    text-align: center;
+}

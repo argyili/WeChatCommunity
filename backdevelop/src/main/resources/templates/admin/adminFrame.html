@@ -1,0 +1,38 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>板块管理员页面</title>
+    <link rel="stylesheet" href="/bootstrap/css/core.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/icon.css"/>
+    <link rel="stylesheet" href="/bootstrap/css/theme.css"/>
+</head>
+<body>
+<div th:fragment="copyright">
+    <div id="mws-header" class="clearfix">
+        <div align="left" width="100px"><h1><font color="white">管理员</font></h1></div>
+    </div>
+    <div id="mws-wrapper">
+        <div id="mws-sidebar-stitch"></div>
+        <div id="mws-sidebar-bg"></div>
+        <div id="mws-sidebar">
+            <div id="mws-navigation">
+                <ul>
+                    <li class="active"><a href="/Admin/refinementPostBlock" class="mws-i-01">帖子加精</a></li>
+                    <li class="active"><a href="/Admin/forbidPostBlock" class="mws-i-01">帖子禁止评论</a></li>
+                    <li class="active"><a href="/Admin/deletePostBlock" class="mws-i-01">删除帖子</a></li>
+                    <li class="active"><a href="/Admin/foldPostBlock" class="mws-i-01">折叠帖子</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="mws-container" class="clearfix">
+            <div id="mws-Main" th:include="::Main">
+            </div>
+            <div id="mws-footer">
+                <a target="_blank" title="信奥社区管理平台">信奥社区管理平台</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

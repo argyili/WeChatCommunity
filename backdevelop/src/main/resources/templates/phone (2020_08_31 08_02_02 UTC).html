@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>验证码请登录</title>
+    <link rel="stylesheet" type="text/css" href="import/css/mws.style.css" media="screen" />
+</head>
+<body>
+    <div id="mws-login">
+        <h1>登录</h1>
+        <div class="mws-login-lock"><img src="import/css/icons/24/locked-2.png" alt="" /></div>
+        <div>
+            <form class="mws-form" th:action="@{/phone}" th:object="${Phone}" method = "get">
+                <div class="mws-form-row">
+                    <div class="mws-form-item large">
+                        <input type="text" th:field="*{phoneCode}" name="phoneCode" id="phoneCode"
+                               class="mws-login-username mws-textinput" autocomplete="off" placeholder="手机号"/>
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <div class="mws-form-item large">
+                        <input type="password" name="verificationCode" id="verificationCode"
+                               class="mws-login-password mws-textinput" autocomplete="off" placeholder="验证码"/>
+                    </div>
+                </div>
+                <div class="mws-form-row">
+                    <input type="submit" value="获取验证码" class="mws-button green mws-login-button" />
+                    <input type="submit" value="登录" class="mws-button green mws-login-button" />
+                    <b align="center" style="color: #FFFFFF; size: 50px"><p th:text="${message}"></p></b>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
